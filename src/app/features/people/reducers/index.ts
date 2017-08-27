@@ -7,9 +7,10 @@ export function reducer(state: Person[] = [], action: collection.Actions) {
     switch (action.type) {
 
         case collection.ADD_PERSON: {
-            let per = state;
-            per.push(action.payload);
-            return per;
+            const newState = [];
+            state.forEach(x => newState.push(x));
+            newState.push(action.payload);
+            return newState;
         }
 
         default: {
