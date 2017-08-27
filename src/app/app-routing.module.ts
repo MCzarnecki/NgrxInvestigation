@@ -7,6 +7,10 @@ const appRoutes = [
     {
       path: 'people',
       loadChildren: './features/people/people.module#PeopleModule',
+    },
+    {
+        path: 'items',
+        loadChildren: './features/items/items.module#ItemsModule',
     }
 ];
 

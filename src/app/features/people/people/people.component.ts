@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Person } from '../person';
 import { Observable } from 'rxjs/Observable';
 
@@ -12,7 +12,7 @@ import { AddPeronAction } from '../actions/collection';
   templateUrl: './people.component.html',
   styleUrls: ['./people.component.css']
 })
-export class PeopleComponent implements OnInit {
+export class PeopleComponent implements OnInit, OnDestroy {
 
   public people;
 
@@ -25,6 +25,10 @@ export class PeopleComponent implements OnInit {
 
   personAdded(event: Person) {
      this.store.dispatch(new AddPeronAction(event));
+  }
+
+  ngOnDestroy(): void {
+    console.log('Destroying PeopleComponent');
   }
 
 }
