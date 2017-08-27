@@ -1,0 +1,10 @@
+<form class="form-inline">
+  <label class="sr-only" for="nameInput">Name</label>
+  <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" name="name" id="nameInput" placeholder="Name" [(ngModel)]="newPerson.name">
+
+  <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+    <input type="text" class="form-control" id="inlineFormInputGroup" name="surname" placeholder="Surname" [(ngModel)]="newPerson.surname">
+  </div>
+
+  <button type="submit" class="btn btn-primary" (click)="add()">Submit</button>
+</form>
