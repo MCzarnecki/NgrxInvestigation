@@ -3,7 +3,8 @@ import { Person } from '../person';
 import { Observable } from 'rxjs/Observable';
 
 import * as fromPeople from '../reducers/index';
-import * as peopleActions from '../actions/collection';
+import * as collection from '../actions/collection';
+
 import { Store } from '@ngrx/store';
 import { AddPeronAction } from '../actions/collection';
 
@@ -14,13 +15,14 @@ import { AddPeronAction } from '../actions/collection';
 })
 export class PeopleComponent implements OnInit, OnDestroy {
 
-  public people;
+  public people: Observable<Person[]>;
 
-  constructor(private store: Store<any>) {
-      this.people = this.store.select('people');
+  constructor(private store: Store<fromPeople.State>) {
+      this.people = this.store.select(fromPeople.getPeopleCollection);
    }
 
   ngOnInit() {
+     this.store.dispatch(new collection.LoadAction());
   }
 
   personAdded(event: Person) {

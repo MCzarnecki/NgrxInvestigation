@@ -7,12 +7,18 @@ import { PeopleAdderComponent } from './people-adder/people-adder.component';
 import { FormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { reducer } from './reducers/index';
+import { EffectsModule } from '@ngrx/effects';
+import { PeopleEffects } from './effects/people.effects';
 
 const COMPONENTS = [PeopleComponent, PeopleListComponent, PeopleAdderComponent];
 
 @NgModule({
     declarations: [COMPONENTS],
-    imports: [PeopleRoutingModule, CommonModule, FormsModule, StoreModule.forFeature('people', reducer)]
+    imports: [PeopleRoutingModule,
+    CommonModule,
+    FormsModule,
+    StoreModule.forFeature('people', reducer),
+    EffectsModule.forFeature([PeopleEffects])]
 })
 export class PeopleModule { }
 
